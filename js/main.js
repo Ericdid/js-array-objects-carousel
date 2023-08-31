@@ -46,6 +46,17 @@ let next = document.getElementById("next");
 let prev = document.getElementById("prev");
 
 // ciclo l array
-images.forEach((image) => {
-  console.log(image);
+images.forEach(() => {
+  // per ogni elemento nell array creo un nuovo elemento da aggiungere all HTML
+  const imageSelected = document.createElement("div");
+  imageSelected.classList.add("slide");
+  imageSelected.innerHTML = `<img src="./img/01.webp" alt="" />
+  <div class="text-center">
+    <h2>titolo</h2>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Non,
+      deleniti.
+    </p>`;
+  //lo aggiungo all HTML
+  container.append(imageSelected);
 });
