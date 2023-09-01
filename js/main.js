@@ -76,7 +76,6 @@ function nextButton() {
   if (activeGame >= images.length) activeGame = 0;
   const newGame = images[activeGame].gameActive;
   newGame.classList.add("active");
-  console.log(newGame);
 }
 let goPrev = document.getElementById("prev");
 goPrev.addEventListener("click", prevButton);
@@ -85,7 +84,7 @@ function prevButton() {
   const oldGame = images[activeGame].gameActive;
   oldGame.classList.remove("active");
   activeGame--;
+  if (activeGame < 0) activeGame = images.length - 1;
   const newGame = images[activeGame].gameActive;
   newGame.classList.add("active");
-  console.log(newGame);
 }
