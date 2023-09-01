@@ -72,6 +72,8 @@ function nextButton() {
   const oldGame = images[activeGame].gameActive;
   oldGame.classList.remove("active");
   activeGame++;
+  // aggiungo il ciclo infinito al carosello
+  if (activeGame >= images.length) activeGame = 0;
   const newGame = images[activeGame].gameActive;
   newGame.classList.add("active");
   console.log(newGame);
