@@ -42,21 +42,30 @@ const images = [
 ];
 
 let container = document.getElementById("slides-container");
-let next = document.getElementById("next");
+let activeImage = 0;
 let prev = document.getElementById("prev");
 
 // ciclo l array
-images.forEach(() => {
+images.forEach((image, index) => {
+  console.log(image, index);
   // per ogni elemento nell array creo un nuovo elemento da aggiungere all HTML
   const imageSelected = document.createElement("div");
   imageSelected.classList.add("slide");
-  imageSelected.innerHTML = `<img src="./img/01.webp" alt="" />
+  //aggiungo active alla slide corrispondente all indice
+  if (index == activeImage) imageSelected.classList.add("active");
+
+  imageSelected.innerHTML = `<img src="./${image.image}" alt="" />
   <div class="text-center">
-    <h2>titolo</h2>
+    <h2>${image.title}  </h2>
     <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Non,
-      deleniti.
+      ${image.text}
     </p>`;
   //lo aggiungo all HTML
   container.append(imageSelected);
 });
+let next = document.getElementById("next");
+next.addEventListener("click", nextImage);
+
+function nextImage(activeImage) {
+  activeImage++;
+}
