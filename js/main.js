@@ -40,32 +40,38 @@ const images = [
     text: "Marvel's Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay.",
   },
 ];
-
+console.log(images);
 let container = document.getElementById("slides-container");
-let activeImage = 0;
+let activeGame = 0;
 let prev = document.getElementById("prev");
 
 // ciclo l array
-images.forEach((image, index) => {
-  console.log(image, index);
+images.forEach((game, index) => {
   // per ogni elemento nell array creo un nuovo elemento da aggiungere all HTML
-  const imageSelected = document.createElement("div");
-  imageSelected.classList.add("slide");
+  const gameSelected = document.createElement("div");
+  gameSelected.classList.add("slide");
   //aggiungo active alla slide corrispondente all indice
-  if (index == activeImage) imageSelected.classList.add("active");
+  if (index == activeGame) gameSelected.classList.add("active");
 
-  imageSelected.innerHTML = `<img src="./${image.image}" alt="" />
+  gameSelected.innerHTML = `<img src="./${game.image}" alt="" />
   <div class="text-center">
-    <h2>${image.title}  </h2>
+    <h2>${game.title}  </h2>
     <p>
-      ${image.text}
+      ${game.text}
     </p>`;
-  //lo aggiungo all HTML
-  container.append(imageSelected);
-});
-let next = document.getElementById("next");
-next.addEventListener("click", nextImage);
 
-function nextImage(activeImage) {
-  activeImage++;
+  // aggiungo un nuovo elemento agli oggetti
+  game.gameActive = gameSelected;
+  console.log(game);
+
+  //lo aggiungo all HTML
+  container.append(gameSelected);
+});
+
+let goNext = document.getElementById("next");
+goNext.addEventListener("click", myFunction);
+
+function myFunction() {
+  // activeGame++;
+  console.log(images[activeGame]);
 }
