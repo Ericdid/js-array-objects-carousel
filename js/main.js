@@ -43,7 +43,6 @@ const images = [
 
 let container = document.getElementById("slides-container");
 let activeGame = 0;
-let prev = document.getElementById("prev");
 
 // ciclo l array
 images.forEach((game, index) => {
@@ -79,3 +78,12 @@ function nextButton() {
 }
 let goPrev = document.getElementById("prev");
 goPrev.addEventListener("click", prevButton);
+
+function prevButton() {
+  const oldGame = images[activeGame].gameActive;
+  oldGame.classList.remove("active");
+  activeGame--;
+  const newGame = images[activeGame].gameActive;
+  newGame.classList.add("active");
+  console.log(newGame);
+}
